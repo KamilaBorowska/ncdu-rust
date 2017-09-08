@@ -61,7 +61,7 @@ void nccreate(int, int, const char *);
 void ncprint(int, int, char *, ...);
 
 /* same as the w* functions of ncurses */
-#define ncaddstr(r, c, s) mvaddstr(subwinr+(r), subwinc+(c), s)
+int ncaddstr(int r, int c, const char *s);
 #define  ncaddch(r, c, s)  mvaddch(subwinr+(r), subwinc+(c), s)
 #define   ncmove(r, c)        move(subwinr+(r), subwinc+(c))
 

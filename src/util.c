@@ -194,6 +194,11 @@ void ncprint(int r, int c, char *fmt, ...) {
 }
 
 
+int ncaddstr(int r, int c, const char *s) {
+  return mvaddstr(subwinr+(r), subwinc+(c), s);
+}
+
+
 /* removes item from the hlnk circular linked list and size counts of the parents */
 static void freedir_hlnk(struct dir *d) {
   struct dir *t, *par, *pt;
