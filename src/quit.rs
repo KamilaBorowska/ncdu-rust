@@ -31,7 +31,7 @@ extern "C" {
 }
 
 #[no_mangle]
-pub static mut confirm_quit: i32 = 0i32;
+pub static mut confirm_quit: i32 = 0;
 
 #[no_mangle]
 pub static mut dir_process: Option<unsafe extern "C" fn() -> i32> = None;
@@ -39,21 +39,21 @@ pub static mut dir_process: Option<unsafe extern "C" fn() -> i32> = None;
 #[no_mangle]
 pub unsafe extern "C" fn quit_key(mut ch: i32) -> i32 {
     if ch == b'Y' as (i32) || ch == b'y' as (i32) {
-        1i32
+        1
     } else {
-        pstate = 1i32;
-        0i32
+        pstate = 1;
+        0
     }
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn quit_draw() {
     browse_draw();
-    nccreate(4i32, 30i32, (*b"ncdu confirm quit\0").as_ptr());
-    ncaddstr(2i32, 2i32, (*b"Really quit? (y/N)\0").as_ptr());
+    nccreate(4, 30, (*b"ncdu confirm quit\0").as_ptr());
+    ncaddstr(2, 2, (*b"Really quit? (y/N)\0").as_ptr());
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn quit_init() {
-    pstate = 5i32;
+    pstate = 5;
 }
