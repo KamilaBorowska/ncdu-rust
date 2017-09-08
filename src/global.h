@@ -51,12 +51,14 @@
 #define FF_BSEL   0x80 /* selected */
 
 /* Program states */
-#define ST_CALC   0
-#define ST_BROWSE 1
-#define ST_DEL    2
-#define ST_HELP   3
-#define ST_SHELL  4
-#define ST_QUIT   5
+enum ProgramState {
+  ST_CALC,
+  ST_BROWSE,
+  ST_DEL,
+  ST_HELP,
+  ST_SHELL,
+  ST_QUIT,
+};
 
 
 /* structure representing a file or directory */
