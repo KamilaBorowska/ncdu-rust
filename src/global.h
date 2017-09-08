@@ -52,12 +52,12 @@
 
 /* Program states */
 enum ProgramState {
-  ST_CALC,
-  ST_BROWSE,
-  ST_DEL,
-  ST_HELP,
-  ST_SHELL,
-  ST_QUIT,
+  Calc,
+  Browse,
+  Del,
+  Help,
+  Shell,
+  Quit,
 };
 
 
@@ -93,7 +93,7 @@ extern long update_delay;
 /* filter directories with CACHEDIR.TAG */
 extern int cachedir_tags;
 /* flag if we should ask for confirmation when quitting */
-extern int confirm_quit;
+extern int CONFIRM_QUIT;
 
 /* handle input from keyboard and update display */
 int input_handle(int);

@@ -244,7 +244,7 @@ void delete_process() {
 void delete_init(struct dir *dr, struct dir *s) {
   state = DS_CONFIRM;
   root = curdir = dr;
-  pstate = ST_DEL;
+  pstate = Del;
   nextsel = s;
 }
 

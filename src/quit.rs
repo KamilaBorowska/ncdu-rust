@@ -6,28 +6,28 @@ extern "C" {
 }
 
 #[no_mangle]
-pub static mut confirm_quit: i32 = 0;
+pub static mut CONFIRM_QUIT: i32 = 0;
 
 #[no_mangle]
-pub static mut dir_process: Option<unsafe extern "C" fn() -> i32> = None;
+pub static mut DIR_PROCESS: Option<unsafe extern "C" fn() -> i32> = None;
 
 #[derive(Clone, Copy)]
 #[repr(i32)]
 pub enum ProgramState {
-    ST_CALC,
-    ST_BROWSE,
-    ST_DEL,
-    ST_HELP,
-    ST_SHELL,
-    ST_QUIT,
+    Calc,
+    Browse,
+    Del,
+    Help,
+    Shell,
+    Quit,
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn quit_key(mut ch: i32) -> i32 {
+pub unsafe extern "C" fn quit_key(ch: i32) -> i32 {
     if ch == b'Y' as (i32) || ch == b'y' as (i32) {
         1
     } else {
-        pstate = ProgramState::ST_BROWSE;
+        pstate = ProgramState::Browse;
         0
     }
 }
@@ -41,5 +41,5 @@ pub unsafe extern "C" fn quit_draw() {
 
 #[no_mangle]
 pub unsafe extern "C" fn quit_init() {
-    pstate = ProgramState::ST_QUIT;
+    pstate = ProgramState::Quit;
 }

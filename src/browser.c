@@ -397,7 +397,7 @@ int browse_key(int ch) {
       if(info_show)
         info_show = 0;
       else
-        if (confirm_quit)
+        if (CONFIRM_QUIT)
           quit_init();
         else return 1;
       break;
@@ -452,7 +452,7 @@ int browse_key(int ch) {
 
 
 void browse_init(struct dir *par) {
-  pstate = ST_BROWSE;
+  pstate = Browse;
   message = NULL;
   dirlist_open(par);
 }

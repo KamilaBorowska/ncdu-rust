@@ -49,12 +49,12 @@ static long lastupdate = 999;
 
 static void screen_draw() {
   switch(pstate) {
-    case ST_CALC:   dir_draw();    break;
-    case ST_BROWSE: browse_draw(); break;
-    case ST_HELP:   help_draw();   break;
-    case ST_SHELL:  shell_draw();  break;
-    case ST_DEL:    delete_draw(); break;
-    case ST_QUIT:   quit_draw();   break;
+    case Calc:   dir_draw();    break;
+    case Browse: browse_draw(); break;
+    case Help:   help_draw();   break;
+    case Shell:  shell_draw();  break;
+    case Del:    delete_draw(); break;
+    case Quit:   quit_draw();   break;
   }
 }
 
@@ -94,11 +94,11 @@ int input_handle(int wait) {
       continue;
     }
     switch(pstate) {
-      case ST_CALC:   return dir_key(ch);
-      case ST_BROWSE: return browse_key(ch);
-      case ST_HELP:   return help_key(ch);
-      case ST_DEL:    return delete_key(ch);
-      case ST_QUIT:   return quit_key(ch);
+      case Calc:   return dir_key(ch);
+      case Browse: return browse_key(ch);
+      case Help:   return help_key(ch);
+      case Del:    return delete_key(ch);
+      case Quit:   return quit_key(ch);
     }
     screen_draw();
   }
@@ -169,7 +169,7 @@ static void argv_parse(int argc, char **argv) {
     case '0': dir_ui = 0; break;
     case '1': dir_ui = 1; break;
     case '2': dir_ui = 2; break;
-    case 'Q': confirm_quit = 1; break;
+    case 'Q': CONFIRM_QUIT = 1; break;
     case  1 : exclude_add(val); break; /* --exclude */
     case 'X':
       if(exclude_addfile(val)) {
@@ -269,19 +269,19 @@ int c_main(int argc, char **argv) {
   while(1) {
     /* We may need to initialize/clean up the screen when switching from the
      * (sometimes non-ncurses) CALC state to something else. */
-    if(pstate != ST_CALC) {
+    if(pstate != Calc) {
       if(dir_ui == 1)
         fputc('\n', stderr);
       init_nc();
     }
 
-    if(pstate == ST_CALC) {
-      if(dir_process()) {
+    if(pstate == Calc) {
+      if(DIR_PROCESS()) {
         if(dir_ui == 1)
           fputc('\n', stderr);
         break;
       }
-    } else if(pstate == ST_DEL)
+    } else if(pstate == Del)
       delete_process();
     else if(input_handle(0))
       break;

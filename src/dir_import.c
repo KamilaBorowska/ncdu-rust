@@ -598,7 +598,7 @@ int dir_import_init(const char *fn) {
   ctx->readbuf[0] = 0;
 
   dir_curpath_set(fn);
-  dir_process = process;
+  DIR_PROCESS = process;
   dir_import_active = 1;
   return 0;
 }

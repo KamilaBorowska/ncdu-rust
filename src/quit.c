@@ -33,7 +33,7 @@ int quit_key(int ch) {
   case 'Y':
     return 1;
   default:
-    pstate = ST_BROWSE;
+    pstate = Browse;
   }
   return 0;
 }
@@ -46,5 +46,5 @@ void quit_draw() {
 }
 
 void quit_init() {
-  pstate = ST_QUIT;
+  pstate = Quit;
 }

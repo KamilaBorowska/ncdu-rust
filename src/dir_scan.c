@@ -297,7 +297,7 @@ void dir_scan_init(const char *path) {
   dir_curpath_set(path);
   dir_setlasterr(NULL);
   dir_seterr(NULL);
-  dir_process = process;
-  pstate = ST_CALC;
+  DIR_PROCESS = process;
+  pstate = Calc;
   confirm_quit_while_scanning_stage_1_passed = 0;
 }

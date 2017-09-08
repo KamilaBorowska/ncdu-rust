@@ -74,9 +74,9 @@ void shell_draw() {
   }
 
   refresh();
-  pstate = ST_BROWSE;
+  pstate = Browse;
 }
 
 void shell_init() {
-  pstate = ST_SHELL;
+  pstate = Shell;
 }

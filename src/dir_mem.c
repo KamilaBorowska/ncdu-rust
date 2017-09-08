@@ -207,7 +207,7 @@ static int final(int fail) {
 void dir_mem_init(struct dir *_orig) {
   orig = _orig;
   root = curdir = NULL;
-  pstate = ST_CALC;
+  pstate = Calc;
 
   dir_output.item = item;
   dir_output.final = final;

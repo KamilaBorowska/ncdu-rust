@@ -102,7 +102,7 @@ int dir_export_init(const char *fn);
 
 
 /* Function set by input code. Returns dir_output.final(). */
-int (*dir_process)();
+int (*DIR_PROCESS)();
 
 /* Scanning a live directory */
 extern int dir_scan_smfs;

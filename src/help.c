@@ -194,7 +194,7 @@ int help_key(int ch) {
         start--;
       break;
     default:
-      pstate = ST_BROWSE;
+      pstate = Browse;
   }
   return 0;
 }
@@ -203,7 +203,7 @@ int help_key(int ch) {
 void help_init() {
   page = 1;
   start = 0;
-  pstate = ST_HELP;
+  pstate = Help;
 }
 
 

@@ -166,7 +166,7 @@ int dir_export_init(const char *fn) {
 
   nstack_init(&stack);
 
-  pstate = ST_CALC;
+  pstate = Calc;
   dir_output.item = item;
   dir_output.final = final;
   dir_output.size = 0;
