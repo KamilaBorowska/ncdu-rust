@@ -259,7 +259,7 @@ static void init_nc() {
 
 
 /* main program */
-int main(int argc, char **argv) {
+int c_main(int argc, char **argv) {
   read_locale();
   argv_parse(argc, argv);
 

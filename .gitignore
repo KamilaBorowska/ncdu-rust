@@ -7,3 +7,5 @@ src/.deps
 src/.dirstamp
 *.o
 stamp-h1
+target
+*.bk

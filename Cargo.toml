@@ -1,0 +1,15 @@
+[package]
+name = "ncdu"
+version = "0.1.0"
+authors = [
+    "Yoran Heling",
+    "Konrad Borowski <konrad@borowski.pw>",
+]
+build = "build.rs"
+
+[dependencies]
+libc = "0.2"
+ncurses = "5.86.0"
+
+[build-dependencies]
+gcc = "0.3"
