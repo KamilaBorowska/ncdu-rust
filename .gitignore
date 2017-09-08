@@ -1,0 +1,9 @@
+Makefile
+config.h
+config.log
+config.status
+ncdu
+src/.deps
+src/.dirstamp
+*.o
+stamp-h1
