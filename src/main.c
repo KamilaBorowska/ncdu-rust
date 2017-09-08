@@ -36,7 +36,7 @@
 #include <yopt.h>
 
 
-int pstate;
+enum ProgramState pstate;
 int read_only = 0;
 long update_delay = 100;
 int cachedir_tags = 0;
