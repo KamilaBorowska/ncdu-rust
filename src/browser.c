@@ -332,16 +332,16 @@ int browse_key(int ch) {
 
     /* sorting items */
     case 'n':
-      dirlist_set_sort(DL_COL_NAME, dirlist_sort_col == DL_COL_NAME ? !dirlist_sort_desc : 0, DL_NOCHANGE);
+      dirlist_set_sort(ColName, dirlist_sort_col == ColName ? !dirlist_sort_desc : 0, NoChange);
       info_show = 0;
       break;
     case 's':
-      i = show_as ? DL_COL_ASIZE : DL_COL_SIZE;
-      dirlist_set_sort(i, dirlist_sort_col == i ? !dirlist_sort_desc : 1, DL_NOCHANGE);
+      i = show_as ? ColAsize : ColSize;
+      dirlist_set_sort(i, dirlist_sort_col == i ? !dirlist_sort_desc : 1, NoChange);
       info_show = 0;
       break;
     case 'C':
-      dirlist_set_sort(DL_COL_ITEMS, dirlist_sort_col == DL_COL_ITEMS ? !dirlist_sort_desc : 1, DL_NOCHANGE);
+      dirlist_set_sort(ColItems, dirlist_sort_col == ColItems ? !dirlist_sort_desc : 1, NoChange);
       info_show = 0;
       break;
     case 'e':
@@ -349,13 +349,13 @@ int browse_key(int ch) {
       info_show = 0;
       break;
     case 't':
-      dirlist_set_sort(DL_NOCHANGE, DL_NOCHANGE, !dirlist_sort_df);
+      dirlist_set_sort(NoChange, NoChange, !dirlist_sort_df);
       info_show = 0;
       break;
     case 'a':
       show_as = !show_as;
-      if(dirlist_sort_col == DL_COL_ASIZE || dirlist_sort_col == DL_COL_SIZE)
-        dirlist_set_sort(show_as ? DL_COL_ASIZE : DL_COL_SIZE, DL_NOCHANGE, DL_NOCHANGE);
+      if(dirlist_sort_col == ColAsize || dirlist_sort_col == ColSize)
+        dirlist_set_sort(show_as ? ColAsize : ColSize, NoChange, NoChange);
       info_show = 0;
       break;
 

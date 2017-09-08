@@ -35,7 +35,7 @@ int64_t dirlist_maxs       = 0,
         dirlist_maxa       = 0;
 
 int    dirlist_sort_desc   = 1,
-       dirlist_sort_col    = DL_COL_SIZE,
+       dirlist_sort_col    = ColSize,
        dirlist_sort_df     = 0,
        dirlist_hidden      = 0;
 
@@ -78,20 +78,20 @@ static int dirlist_cmp(struct dir *x, struct dir *y) {
 #define CMP_ITEMS (x->items > y->items ? 1 : (x->items == y->items ? 0 : -1))
 
   /* try 1 */
-  r = dirlist_sort_col == DL_COL_NAME ? CMP_NAME :
-      dirlist_sort_col == DL_COL_SIZE ? CMP_SIZE :
-      dirlist_sort_col == DL_COL_ASIZE ? CMP_ASIZE :
+  r = dirlist_sort_col == ColName ? CMP_NAME :
+      dirlist_sort_col == ColSize ? CMP_SIZE :
+      dirlist_sort_col == ColAsize ? CMP_ASIZE :
       CMP_ITEMS;
   /* try 2 */
   if(!r)
-    r = dirlist_sort_col == DL_COL_SIZE ? CMP_ASIZE : CMP_SIZE;
+    r = dirlist_sort_col == ColSize ? CMP_ASIZE : CMP_SIZE;
   /* try 3 */
   if(!r)
-    r = (dirlist_sort_col == DL_COL_NAME || dirlist_sort_col == DL_COL_ITEMS) ?
+    r = (dirlist_sort_col == ColName || dirlist_sort_col == ColItems) ?
          CMP_ASIZE : CMP_NAME;
   /* try 4 */
   if(!r)
-    r = dirlist_sort_col == DL_COL_ITEMS ? CMP_NAME : CMP_ITEMS;
+    r = dirlist_sort_col == ColItems ? CMP_NAME : CMP_ITEMS;
 
   /* reverse when sorting in descending order */
   if(dirlist_sort_desc && r != 0)
@@ -363,11 +363,11 @@ struct dir *dirlist_top(int hint) {
 
 void dirlist_set_sort(int col, int desc, int df) {
   /* update config */
-  if(col != DL_NOCHANGE)
+  if(col != NoChange)
     dirlist_sort_col = col;
-  if(desc != DL_NOCHANGE)
+  if(desc != NoChange)
     dirlist_sort_desc = desc;
-  if(df != DL_NOCHANGE)
+  if(df != NoChange)
     dirlist_sort_df = df;
 
   /* sort the list (excluding the parent, which is always on top) */

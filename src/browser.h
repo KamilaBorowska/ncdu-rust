@@ -28,7 +28,7 @@
 
 #include "global.h"
 
-int  confirm_quit;
+int  CONFIRM_QUIT;
 int  browse_key(int);
 void browse_draw(void);
 void browse_init(struct dir *);

@@ -32,11 +32,13 @@
 #include "global.h"
 
 
-#define DL_NOCHANGE   -1
-#define DL_COL_NAME    0
-#define DL_COL_SIZE    1
-#define DL_COL_ASIZE   2
-#define DL_COL_ITEMS   3
+enum SortOrder {
+  NoChange = -1,
+  ColName = 0,
+  ColSize = 1,
+  ColAsize = 2,
+  ColItems = 3,
+};
 
 
 void dirlist_open(struct dir *);
