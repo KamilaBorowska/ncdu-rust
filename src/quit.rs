@@ -2,7 +2,7 @@ extern "C" {
     fn browse_draw();
     fn ncaddstr(r: i32, c: i32, s: *const u8) -> i32;
     fn nccreate(arg1: i32, arg2: i32, arg3: *const u8);
-    static mut pstate: i32;
+    static mut pstate: ProgramState;
 }
 
 #[no_mangle]
@@ -27,7 +27,7 @@ pub unsafe extern "C" fn quit_key(mut ch: i32) -> i32 {
     if ch == b'Y' as (i32) || ch == b'y' as (i32) {
         1
     } else {
-        pstate = ProgramState::ST_BROWSE as (i32);
+        pstate = ProgramState::ST_BROWSE;
         0
     }
 }
@@ -41,5 +41,5 @@ pub unsafe extern "C" fn quit_draw() {
 
 #[no_mangle]
 pub unsafe extern "C" fn quit_init() {
-    pstate = ProgramState::ST_QUIT as (i32);
+    pstate = ProgramState::ST_QUIT;
 }

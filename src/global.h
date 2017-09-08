@@ -85,7 +85,7 @@ struct dir {
 
 
 /* program state */
-extern int pstate;
+extern enum ProgramState pstate;
 /* read-only flag */
 extern int read_only;
 /* minimum screen update interval when calculating, in ms */
