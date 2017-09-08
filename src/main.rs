@@ -12,6 +12,8 @@ extern "C" {
     fn c_main(argc: c_int, argv: *mut *mut c_char) -> c_int;
 }
 
+pub mod quit;
+
 fn main() {
     let mut argv_storage: Vec<_> = env::args_os()
         .map(|arg| {

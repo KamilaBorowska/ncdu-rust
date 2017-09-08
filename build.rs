@@ -14,7 +14,6 @@ fn main() {
         .file("src/help.c")
         .file("src/main.c")
         .file("src/path.c")
-        .file("src/quit.c")
         .file("src/shell.c")
         .file("src/util.c")
         .include(".")
