@@ -45,10 +45,11 @@ static struct dir *head, *head_real, *selected, *top = NULL;
 
 
 
-#define ISHIDDEN(d) (dirlist_hidden && (d) != dirlist_parent && (\
+static bool is_hidden(struct dir *d) {
+  return dirlist_hidden && (d) != dirlist_parent && (\
     (d)->flags & FF_EXL || (d)->name[0] == '.' || (d)->name[strlen((d)->name)-1] == '~'\
-  ))
-
+  );
+}
 
 
 static int dirlist_cmp(struct dir *x, struct dir *y) {
@@ -160,7 +161,7 @@ static void dirlist_fixup() {
 
   for(t=head; t; t=t->next) {
     /* not visible? not selected! */
-    if(ISHIDDEN(t))
+    if(is_hidden(t))
       t->flags &= ~FF_BSEL;
     else {
       /* visible and selected? make sure only one item is selected */
@@ -226,13 +227,13 @@ struct dir *dirlist_next(struct dir *d) {
   if(!head)
     return NULL;
   if(!d) {
-    if(!ISHIDDEN(head))
+    if(!is_hidden(head))
       return head;
     else
       d = head;
   }
   while((d = d->next)) {
-    if(!ISHIDDEN(d))
+    if(!is_hidden(d))
       return d;
   }
   return NULL;
@@ -243,7 +244,7 @@ static struct dir *dirlist_prev(struct dir *d) {
   if(!head || !d)
     return NULL;
   while((d = d->prev)) {
-    if(!ISHIDDEN(d))
+    if(!is_hidden(d))
       return d;
   }
   if(dirlist_parent)
@@ -258,7 +259,7 @@ struct dir *dirlist_get(int i) {
   if(!head)
     return NULL;
 
-  if(ISHIDDEN(selected)) {
+  if(is_hidden(selected)) {
     selected = dirlist_next(NULL);
     return selected;
   }
@@ -290,7 +291,7 @@ struct dir *dirlist_get(int i) {
 
 
 void dirlist_select(struct dir *d) {
-  if(!d || !head || ISHIDDEN(d) || d->parent != head->parent)
+  if(!d || !head || is_hidden(d) || d->parent != head->parent)
     return;
 
   selected->flags &= ~FF_BSEL;
